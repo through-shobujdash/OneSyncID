@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 
-const IPhoneApp = () => {
+const MobileStart = () => {
   const [time, setTime] = useState("10:10");
 
   useEffect(() => {
@@ -53,4 +53,4 @@ const IPhoneApp = () => {
   );
 };
 
-export default IPhoneApp;
+export default MobileStart;
