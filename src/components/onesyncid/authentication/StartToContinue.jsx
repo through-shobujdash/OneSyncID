@@ -1,6 +1,7 @@
 "use client"
 import { useRouter } from "next/navigation";
 import Illustration from "../../../assets/images/Illustration.svg";
+import OneSyncLogo from "../../../assets/images/Onesync-Logo.svg";
 
 const StartToContinue = () => {
   const router = useRouter();
@@ -10,7 +11,9 @@ const StartToContinue = () => {
       <div className="bg-blue-900 shadow-lg rounded-lg flex w-full max-w-5xl m-6">
         {/* Left Section */}
         <div className="w-1/2 m-2 p-10 flex flex-col items-center justify-center bg-white border-r border-gray-200 rounded-2xl">
-          <h1 className="text-3xl font-bold text-blue-700 mb-4">OneSyncID</h1>
+          <h1 className="text-3xl font-bold text-blue-700 mb-4">
+              <OneSyncLogo className="mb-6 w-70 h-auto" />
+          </h1>
           <p className="text-xl font-semibold text-blue-700 text-center mb-6">
             <span className="text-[#025FC9]">One app</span>
             <span className="text-[#002D94]">
