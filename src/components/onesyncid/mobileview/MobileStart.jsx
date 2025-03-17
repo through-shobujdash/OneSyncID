@@ -2,8 +2,10 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const MobileStart = () => {
+      const router = useRouter();
   const [time, setTime] = useState("10:10");
 
   useEffect(() => {
@@ -23,7 +25,8 @@ const MobileStart = () => {
     <main className="w-full h-screen flex flex-col items-center justify-between bg-gradient-to-br from-gray-100 to-blue-100 p-6">
       <div className="flex-grow flex items-center justify-center w-full">
         <motion.h1
-          className="text-3xl font-bold text-blue-600 relative z-10"
+          onClick={() => router.push("/start")}
+          className="text-3xl font-bold text-blue-600 relative z-10 cursor-pointer"
           initial={{ y: -10, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
