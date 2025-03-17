@@ -1,10 +1,10 @@
-import OneSyncIDAuth from '@/components/Authentication/OneSyncIDAuth'
+import SignIn from '@/components/onesyncid/authentication/SignIn'
 import React from 'react'
 
 const page = () => {
   return (
     <div>
-      <OneSyncIDAuth/>
+      <SignIn/>
     </div>
   )
 }
