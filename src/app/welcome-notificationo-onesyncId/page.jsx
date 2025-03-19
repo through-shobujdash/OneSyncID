@@ -1,5 +1,5 @@
 "use client";
-import OneSyncLogo from "../../assets/images/Onesync-Logo.svg";
+import OneSyncLogo from "../../assets/images/Onesync-Logo2.svg";
 import Password_Illustration from "../../assets/images/Password-Illustration.svg";
 import ThrouthLogo from "../../assets/images/through-logo.svg";
 
@@ -44,27 +44,29 @@ const page = () => {
       <div className="hidden min-h-screen sm:flex items-center justify-center bg-blue-100">
         <div className="bg-blue-900 shadow-lg rounded-lg flex w-full max-w-5xl m-6 h-[90vh]">
           {/* Left Section */}
-          <div className="w-1/2 m-2 p-5 flex flex-col items-center justify-center bg-white border-r border-gray-200 rounded-2xl">
+          <div className="w-1/2 m-2 p-5 flex flex-col justify-center bg-white border-r border-gray-200 rounded-2xl">
             <h1 className="text-3xl font-bold text-blue-700 mb-4">
-              <OneSyncLogo className="mb-6 w-70 h-auto" />
+              <OneSyncLogo className="mb-6 h-auto" />
             </h1>
-            <p className="text-xl font-semibold text-blue-700 text-center mb-6">
-              <span className="text-[#025FC9]">
-                {" "}
-                Your all-in-one app for <br />{" "}
-              </span>
-              <span className="text-[#002D94]">
-                {" "}
-                one time verification <br />
-              </span>
-            </p>
-            <Password_Illustration className="mb-6 w-60 h-90" />
-            <p className="text-sm text-gray-500">from</p>
-            <ThrouthLogo className="mb-2 w-16 h-auto" />
+            <div className="flex flex-col  justify-center items-center">
+              <p className="text-xl font-semibold text-blue-700 text-center mb-6">
+                <span className="text-[#025FC9]">
+                  {" "}
+                  Your all-in-one app for <br />{" "}
+                </span>
+                <span className="text-[#002D94]">
+                  {" "}
+                  one time verification <br />
+                </span>
+              </p>
+              <Password_Illustration className="mb-6" />
+              <p className="text-sm text-gray-500">from</p>
+              <ThrouthLogo className="mb-2 w-16 h-auto" />
+            </div>
           </div>
 
           {/* Right Section */}
-          <div className="w-1/2 p-12 bg-blue-900 text-white rounded-2xl overflow-y-auto h-full">
+          <div className="w-1/2 p-6 pt-18 md:mt-0 md:p-12 bg-blue-900 text-white rounded-2xl overflow-y-auto h-full">
             <div>
               <h2 className="text-3xl font-bold mb-4">Welcome to OneSyncID</h2>
               <p className="text-xs text-gray-400 mb-4">
