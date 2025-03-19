@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import OneSyncLogo from "../../../assets/images/Onesync-Logo.svg"
+import { Donegal_One } from "next/font/google";
 
 const MobileStart = () => {
   const router = useRouter();
@@ -123,3 +124,6 @@ const MobileStart = () => {
 };
 
 export default MobileStart;
+
+
+

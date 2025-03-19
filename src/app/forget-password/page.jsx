@@ -1,27 +1,40 @@
 "use client";
 import { ChevronLeft } from "lucide-react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Illustration from "../../assets/images/Illustration.svg";
-import OneSyncLogo from "../../assets/images/Onesync-Logo.svg";
+import OneSyncLogo from "../../assets/images/Onesync-Logo2.svg";
 import ThrouthLogo from "../../assets/images/through-logo.svg";
 
 const page = () => {
   const [currentStep, setCurrentStep] = useState(1);
+  const [formData, setFormData] = useState({
+    email: "",
+    passkey: "",
+    newPassword: "",
+    confirPassword: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   const router = useRouter();
 
-  const handleSelectArea = (e) => {
-    e.preventDefault();
+  const handleSelectArea = () => {
+    console.log("fromdata", formData);
     setCurrentStep(2);
   };
 
-  const handleCreateAccount = (e) => {
-    e.preventDefault();
+  const handleCreateAccount = () => {
+    console.log("fromdata", formData);
     setCurrentStep(3);
   };
 
-  const handleNextPage = (e) => {
-    e.preventDefault();
+  const handleNextPage = () => {
+    console.log("fromdata", formData);
     setCurrentStep(4);
   };
 
@@ -42,7 +55,10 @@ const page = () => {
             </h2>
 
             <input
-              type="text"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder="Enter Phone/Email*"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
             />
@@ -82,7 +98,7 @@ const page = () => {
               </div>
 
               {/* Code Input Boxes */}
-              <div className="flex space-x-2 mb-4">
+              {/* <div className="flex space-x-2 mb-4">
                 {Array(4)
                   .fill(0)
                   .map((_, index) => (
@@ -93,7 +109,15 @@ const page = () => {
                       className="w-12 h-12 text-center border border-blue-600 rounded-md focus:outline-none focus:border-blue-800"
                     />
                   ))}
-              </div>
+              </div> */}
+              <input
+                type="text"
+                name="passkey"
+                value={formData.passkey}
+                onChange={handleChange}
+                placeholder="Enter your 8 digit Passkey*"
+                className="w-full p-3 border border-gray-300 rounded bg-white text-blue-900 "
+              />
 
               <p className="text-sm text-gray-600 mb-4">
                 Code Expires in: <span className="text-blue-600">1:18 min</span>
@@ -134,7 +158,10 @@ const page = () => {
             </div>
 
             <input
-              type="text"
+              type="password"
+              name="newPassword"
+              value={formData.newPassword}
+              onChange={handleChange}
               placeholder="Create new password"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200 mt-2"
             />
@@ -143,7 +170,10 @@ const page = () => {
               uppercase, lowercase, number and symbol
             </p>
             <input
-              type="text"
+              type="password"
+              name="confirPassword"
+              value={formData.confirPassword}
+              onChange={handleChange}
               placeholder="Confirm new password"
               className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200 mb-6"
             />
@@ -159,7 +189,7 @@ const page = () => {
             </div>
 
             <button
-              onClick={() => router.push("/welcome-notificationo-onesyncId")}
+              onClick={handleCreateAccount}
               className="w-full py-2 bg-blue-600 text-white rounded-lg mb-4 hover:bg-blue-700"
             >
               Continue
@@ -172,25 +202,27 @@ const page = () => {
       <div className="hidden min-h-screen sm:flex items-center justify-center bg-blue-100">
         <div className="bg-blue-900 shadow-lg rounded-lg flex w-full max-w-5xl m-6 h-[90vh]">
           {/* Left Section */}
-          <div className="w-1/2 m-2 p-10 flex flex-col items-center justify-center bg-white border-r border-gray-200 rounded-2xl">
+          <div className="w-1/2 m-2 p-10 flex flex-col  justify-center bg-white border-r border-gray-200 rounded-2xl">
             <h1 className="text-3xl font-bold text-blue-700 mb-4">
-              <OneSyncLogo className="mb-6 w-70 h-auto" />
+              <OneSyncLogo className="mb-6 h-auto" />
             </h1>
-            <p className="text-xl font-semibold text-blue-700 text-center mb-6">
-              <span className="text-[#025FC9]">One app</span>
-              <span className="text-[#002D94]">
-                {" "}
-                for <br /> every kind{" "}
-              </span>
-              <span className="text-[#025FC9]"> of verification</span>
-            </p>
-            <Illustration className="mb-6 w-80 h-auto" />
-            <p className="text-sm text-gray-500">from</p>
-            <ThrouthLogo className="mb-2 w-16 h-auto" />
+            <div className="flex flex-col  justify-center items-center">
+              <p className="text-xl font-semibold text-blue-700 text-center mb-6">
+                <span className="text-[#025FC9]">One app</span>
+                <span className="text-[#002D94]">
+                  {" "}
+                  for <br /> every kind{" "}
+                </span>
+                <span className="text-[#025FC9]"> of verification</span>
+              </p>
+              <Illustration className="mb-6" />
+              <p className="text-sm text-gray-500">from</p>
+              <ThrouthLogo className="mb-2 w-16 h-auto" />
+            </div>
           </div>
 
           {/* Right Section */}
-          <div className="w-1/2 p-12 bg-blue-900 text-white rounded-2xl overflow-y-auto h-full">
+          <div className="w-1/2 p-6 pt-18 md:mt-0 md:p-12 bg-blue-900 text-white rounded-2xl overflow-y-auto h-full">
             {currentStep === 1 && (
               // Step 1: Select Area Form
               <div>
@@ -199,26 +231,32 @@ const page = () => {
                   Enter your Phone number or Email address where we send OTP to
                   fix your password
                 </p>
-                <form onClick={handleSelectArea} className="space-y-5">
+                <div className="space-y-5">
                   <input
                     type="text"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                     placeholder="Enter Phone number/Email*"
-                    className="w-full p-3 border border-yellow-500 rounded bg-white text-blue-900"
+                    className="w-full p-3 border border-gray-300 rounded bg-white text-blue-900"
                   />
 
                   <button
-                    type="submit"
-                    className="w-full py-3 mt-20 bg-yellow-500 text-blue-900 font-bold rounded shadow-md hover:bg-yellow-400 transition"
+                    onClick={handleSelectArea}
+                    className="w-full py-3 mt-20 bg-yellow-500 text-blue-900 font-bold rounded shadow-md hover:bg-yellow-400 transition cursor-pointer"
                   >
                     Continue
                   </button>
 
                   <p className="text-center mt-4">
-                    <a href="#" className="text-white underline">
+                    <Link
+                      href="/singin"
+                      className="text-white underline cursor-pointer"
+                    >
                       Back
-                    </a>
+                    </Link>
                   </p>
-                </form>
+                </div>
               </div>
             )}
 
@@ -227,7 +265,7 @@ const page = () => {
               <div>
                 <h2 className="text-3xl font-bold mb-4">Enter OTP</h2>
 
-                <form onClick={handleCreateAccount} className="space-y-5">
+                <div className="space-y-5">
                   <div>
                     <label className="block mb-2">
                       We send the code to{" "}
@@ -235,8 +273,11 @@ const page = () => {
                     </label>
                     <input
                       type="text"
+                      name="passkey"
+                      value={formData.passkey}
+                      onChange={handleChange}
                       placeholder="Enter your 8 digit Passkey*"
-                      className="w-full p-3 border border-yellow-500 rounded bg-white text-blue-900 "
+                      className="w-full p-3 border border-gray-300 rounded bg-white text-blue-900 "
                     />
                   </div>
 
@@ -251,17 +292,20 @@ const page = () => {
                     </span>
                   </p>
                   <button
-                    type="submit"
-                    className="w-full py-3 bg-yellow-500 text-blue-900 font-bold rounded"
+                    onClick={handleCreateAccount}
+                    className="w-full py-3 bg-yellow-500 text-blue-900 font-bold rounded cursor-pointer"
                   >
                     Continue
                   </button>
                   <p className="text-center mt-4">
-                    <a href="#" className="text-white underline">
+                    <button
+                      onClick={() => setCurrentStep(1)}
+                      className="text-white underline cursor-pointer"
+                    >
                       Back
-                    </a>
+                    </button>
                   </p>
-                </form>
+                </div>
               </div>
             )}
 
@@ -270,16 +314,22 @@ const page = () => {
               <div>
                 <h2 className="text-3xl font-bold mb-4">Create New Password</h2>
 
-                <form onClick={handleNextPage} className="space-y-5">
+                <div className="space-y-5">
                   <input
-                    type="text"
+                    type="password"
+                    name="newPassword"
+                    value={formData.newPassword}
+                    onChange={handleChange}
                     placeholder="Create new password*"
-                    className="w-full p-3 border border-yellow-500 rounded bg-white text-blue-900"
+                    className="w-full p-3 border border-gray-300 rounded bg-white text-blue-900"
                   />
                   <input
-                    type="text"
+                    type="password"
+                    name="confirPassword"
+                    value={formData.confirPassword}
+                    onChange={handleChange}
                     placeholder="Confirm new password*"
-                    className="w-full p-3 border border-yellow-500 rounded bg-white text-blue-900"
+                    className="w-full p-3 border border-gray-300 rounded bg-white text-blue-900"
                   />
 
                   <p className="text-xs text-gray-400 mt-8 my-8">
@@ -293,17 +343,20 @@ const page = () => {
                     </span>
                   </p>
                   <button
-                    type="submit"
-                    className="w-full py-3 bg-yellow-500 text-blue-900 font-bold rounded"
+                    onClick={handleNextPage}
+                    className="w-full py-3 bg-yellow-500 text-blue-900 font-bold rounded cursor-pointer"
                   >
                     Continue
                   </button>
                   <p className="text-center mt-4">
-                    <a href="#" className="text-white underline">
+                    <button
+                      onClick={() => setCurrentStep(2)}
+                      className="text-white underline cursor-pointer"
+                    >
                       Back
-                    </a>
+                    </button>
                   </p>
-                </form>
+                </div>
               </div>
             )}
             {currentStep === 4 && (
@@ -316,15 +369,15 @@ const page = () => {
                   us.
                 </p>
 
-                <form onClick={handleNextPage} className="space-y-5">
+                <div className="space-y-5">
                   <button
                     onClick={() => router.push("/signin")}
                     type="submit"
-                    className="w-full py-3 bg-yellow-500 text-blue-900 font-bold rounded mt-20"
+                    className="w-full py-3 bg-yellow-500 text-blue-900 font-bold rounded mt-20 cursor-pointer"
                   >
                     Back to Sing in
                   </button>
-                </form>
+                </div>
               </div>
             )}
           </div>
