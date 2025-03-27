@@ -4,13 +4,15 @@ import { useState } from "react";
 import Illustration from "../../../assets/images/Illustration.svg";
 import OneSyncLogo from "../../../assets/images/Onesync-Logo2.svg";
 import ThroughLogo from "../../../assets/images/through-logo.svg";
+import { useUser } from "@/contaxt/userContaxt";
 
 const StartToContinue = () => {
   const router = useRouter();
   const [phoneOremail, setPhoneOremail] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(null);
-  const [email, setEmail] = useState(null);
+  // const [email, setEmail] = useState(null);
   const [alertText, setAlertText] = useState(null);
+  const { email, setEmail } = useUser();
 
   // Helper function to check if the input is a Bangladeshi phone number
   const isBangladeshiPhoneNumber = (input) => {
@@ -48,7 +50,7 @@ const StartToContinue = () => {
 
   // Improved Create Account Handler
   const handleCreateAccount = async () => {
-    console.log("phoneOremail:", phoneOremail);
+    // console.log("phoneOremail:", phoneOremail);
 
     if (!phoneOremail.trim()) {
       setAlertText("Please enter your phone number or email to continue.");
